@@ -1,4 +1,5 @@
 #pragma once
+
 class ViewPlane
 {
 public:
@@ -19,4 +20,3 @@ public:
 	int Rhor;		// Resolucion horizontal
 	double s;		// Tamaño del pixel
 };
-

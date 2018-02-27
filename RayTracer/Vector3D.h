@@ -17,5 +17,7 @@ public:
 	void Mostrar();								  // Mostrar el vector	
 
 	// Componentes
-	double x, y, z;
+	double x;
+	double y;
+	double z;
 };
