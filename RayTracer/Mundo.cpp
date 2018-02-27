@@ -41,16 +41,13 @@ void Mundo::buildSphere()
 // Vista paralela ortografica
 void Mundo::drawScene() const
 {
-	int dpi = 72;
 	int n = viewPlane.horizontalResolution * viewPlane.verticalResolution;
 	ColorRGB* colors = new ColorRGB[n];
-
 	ColorRGB colorPixel;
 	Rayo	 rayo;
 	int Rhor = viewPlane.horizontalResolution;
 	int Rver = viewPlane.verticalResolution;
-	float s = viewPlane.pixelSize;
-	float zw = 100;
+
 	rayo.vecD = Vector3D(0.0, 0.0, -1.0);
 
 	for (int fila = 0; fila < Rver; fila++)
@@ -68,6 +65,7 @@ void Mundo::drawScene() const
 		}
 	}
 	Salida salida;
+	int dpi = 72;
 	salida.savebmp("escena.bmp", Rhor, Rver, dpi, colors);
 }
 
