@@ -9,14 +9,13 @@ public:
 	~ViewPlane();
 
 	ViewPlane& operator= (const ViewPlane& rhs);// Operador de asignacion
-	void establecerRhor( const int Rhor );
-	void establecerRver( const int Rver );
-	void establecerS(const float size);
-
-
-
+	void setVerticalResolution(const int& Rhor);
+	void setHorizontalResolution(const int& Rver);
+	void setResolutions(const int& horizontalResolution, const int& verticalResolution);
+	void setPixelSize(const float& size);
+	
 	// Datos
-	int Rver;		// Resolucion vertical
-	int Rhor;		// Resolucion horizontal
-	double s;		// Tamaño del pixel
+	int verticalResolution;		// Resolucion vertical
+	int horizontalResolution;	// Resolucion horizontal
+	double pixelSize;			// Tamaño del pixel
 };

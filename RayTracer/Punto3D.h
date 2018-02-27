@@ -14,5 +14,7 @@ public:
 	Vector3D operator-(const Punto3D& p) const;	// Restar dos puntos
 	Punto3D operator+(const Vector3D& v) const;	// Sumar un vector
 		
-	double x, y, z;// Coordenadas	
+	double x;
+	double y;
+	double z; // Coordenadas	
 };

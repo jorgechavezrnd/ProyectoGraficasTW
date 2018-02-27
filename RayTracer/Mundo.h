@@ -17,6 +17,7 @@ public:
 	
 	void addGeometricObject(ObjetoGeometrico* ptrObject);
 	void build();
+	void buildSphere();
 	void drawScene() const;
 	void addLight(Luz* ptrLight);
 

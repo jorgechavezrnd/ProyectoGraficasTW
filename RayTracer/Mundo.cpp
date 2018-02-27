@@ -2,11 +2,12 @@
 #include "Mundo.h"
 
 Mundo::Mundo() 
-	: backgroundColor(negro), tracerPtr(nullptr) 
+  : backgroundColor(blanco),
+	tracerPtr(nullptr) 
 {
 }
 
-Mundo::~Mundo() 
+Mundo::~Mundo()
 {
 	delete tracerPtr;
 	tracerPtr = NULL;
@@ -14,25 +15,28 @@ Mundo::~Mundo()
 	delete_lights();
 }
 
-void Mundo::addGeometricObject(ObjetoGeometrico* ptr_objeto)
+void Mundo::addGeometricObject(ObjetoGeometrico* ptrObject)
 {
-	objects.push_back(ptr_objeto);
+	objects.push_back(ptrObject);
 }
 
-void Mundo::build() 
+void Mundo::build()
 {
-	viewPlane.establecerRhor(800);
-	viewPlane.establecerRver(700);
-	viewPlane.establecerS(0.4);
-	backgroundColor = blanco;
+	viewPlane.setResolutions(700, 800);
+	viewPlane.setPixelSize(0.4);
 	tracerPtr = new EsferaSola(this);
-	sphere.establecerCentro(0.0);
-	sphere.establecerRadio(90);
+	buildSphere();
 	// Luces
 	LuzPuntual* ptrLuzPuntual = new LuzPuntual;
 	ptrLuzPuntual->establecerUbicacion(0.0, 160.0, 200.0);
-	ptrLuzPuntual->establecerColor(1.0,1.0,1.0);
+	ptrLuzPuntual->establecerColor(blanco);
 	addLight(ptrLuzPuntual);
+}
+
+void Mundo::buildSphere()
+{
+	sphere.establecerCentro(0.0);
+	sphere.establecerRadio(90.0);
 }
 
 // Vista paralela ortografica
@@ -40,14 +44,14 @@ void Mundo::drawScene() const
 {
 	Salida salida;
 	int dpi = 72;
-	int n = viewPlane.Rhor * viewPlane.Rver;
-	ColorRGB *colores = new ColorRGB[n];
+	int n = viewPlane.horizontalResolution * viewPlane.verticalResolution;
+	ColorRGB* colors = new ColorRGB[n];
 
 	ColorRGB colorPixel;
 	Rayo	 rayo;
-	int Rhor = viewPlane.Rhor;
-	int Rver = viewPlane.Rver;
-	float s = viewPlane.s;
+	int Rhor = viewPlane.horizontalResolution;
+	int Rver = viewPlane.verticalResolution;
+	float s = viewPlane.pixelSize;
 	float zw = 100;
 	rayo.vecD = Vector3D(0.0, 0.0, -1.0);
 
@@ -56,16 +60,16 @@ void Mundo::drawScene() const
 		for (int col = 0; col < Rhor; col++)
 		{
 			// DISPARAMOS UN RAYO---------------------------------------------------------
-			double x_w = viewPlane.s * (col - viewPlane.Rhor / 2 + 0.5);   // coordenada x
-			double y_w = viewPlane.s * (fila - viewPlane.Rver / 2 + 0.5);  // coordenada y
+			double x_w = viewPlane.pixelSize * (col - viewPlane.horizontalResolution / 2 + 0.5);   // coordenada x
+			double y_w = viewPlane.pixelSize * (fila - viewPlane.verticalResolution / 2 + 0.5);  // coordenada y
 			double z_w = 100.0;				   		         // coordenada z	
 			Punto3D O(x_w, y_w, z_w);				         // Punto O		
 			rayo.O = O;
 			colorPixel = tracerPtr->trace_ray(rayo);
-			colores[fila * Rhor + col] = colorPixel;
+			colors[fila * Rhor + col] = colorPixel;
 		}
 	}
-	salida.savebmp("escena.bmp", Rhor, Rver, dpi, colores);
+	salida.savebmp("escena.bmp", Rhor, Rver, dpi, colors);
 }
 
 void Mundo::addLight(Luz* ptrLuz)
