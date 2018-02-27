@@ -26,11 +26,10 @@ void Mundo::build()
 	viewPlane.setPixelSize(0.4);
 	tracerPtr = new EsferaSola(this);
 	buildSphere();
-	// Luces
-	LuzPuntual* ptrLuzPuntual = new LuzPuntual;
-	ptrLuzPuntual->establecerUbicacion(0.0, 160.0, 200.0);
-	ptrLuzPuntual->establecerColor(blanco);
-	addLight(ptrLuzPuntual);
+	addLight(new LuzPuntual{
+		Punto3D(0.0, 160.0, 200.0),
+		blanco
+	});
 }
 
 void Mundo::buildSphere()
@@ -42,7 +41,6 @@ void Mundo::buildSphere()
 // Vista paralela ortografica
 void Mundo::drawScene() const
 {
-	Salida salida;
 	int dpi = 72;
 	int n = viewPlane.horizontalResolution * viewPlane.verticalResolution;
 	ColorRGB* colors = new ColorRGB[n];
@@ -69,6 +67,7 @@ void Mundo::drawScene() const
 			colors[fila * Rhor + col] = colorPixel;
 		}
 	}
+	Salida salida;
 	salida.savebmp("escena.bmp", Rhor, Rver, dpi, colors);
 }
 
@@ -77,22 +76,22 @@ void Mundo::addLight(Luz* ptrLuz)
 	lights.push_back(ptrLuz);
 }
 
-void Mundo::delete_objects() {
-
-	for (int j = 0; j < objects.size(); j++) {
+void Mundo::delete_objects()
+{
+	for (int j = 0; j < objects.size(); j++)
+	{
 		delete objects[j];
 		objects[j] = NULL;
 	}
-
 	objects.erase(objects.begin(), objects.end());
 }
 
-void Mundo::delete_lights() {
-
-	for (int j = 0; j < lights.size(); j++) {
+void Mundo::delete_lights()
+{
+	for (int j = 0; j < lights.size(); j++)
+	{
 		delete lights[j];
 		lights[j] = NULL;
 	}
-
 	lights.erase(lights.begin(), lights.end());
 }

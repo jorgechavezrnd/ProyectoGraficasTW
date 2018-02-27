@@ -5,6 +5,12 @@ LuzPuntual::LuzPuntual() :Luz(), ls(1.0), color(1.0), ubicacion(0,1,0)
 {
 }
 
+LuzPuntual::LuzPuntual(const Punto3D& punto3d, const ColorRGB& color)
+  : ubicacion(punto3d),
+	color(color)
+{
+}
+
 LuzPuntual::~LuzPuntual()
 {
 }

@@ -6,6 +6,7 @@ class LuzPuntual : public Luz
 {
 public:
 	LuzPuntual();
+	LuzPuntual(const Punto3D& punto3d, const ColorRGB& color);
 	~LuzPuntual();
 	Vector3D obtenerDireccion(ShadeRec& sr);
 	ColorRGB L(ShadeRec& sr);

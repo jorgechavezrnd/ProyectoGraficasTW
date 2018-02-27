@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Constantes.h"
 #include "Rayo.h"
 #include "ColorRGB.h"
