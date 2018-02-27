@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Punto3D.h"
 #include "Vector3D.h"
 
@@ -15,5 +16,3 @@ public:
 	Vector3D vecD;												// Direccion
 
 };
-
-

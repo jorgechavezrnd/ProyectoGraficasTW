@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Vector3D.h"
+
 class Punto3D
 {
 public:
@@ -14,4 +16,3 @@ public:
 		
 	double x, y, z;// Coordenadas	
 };
-

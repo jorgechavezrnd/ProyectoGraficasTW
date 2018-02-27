@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include "ViewPlane.h"
 #include "ColorRGB.h"
@@ -9,6 +10,7 @@
 
 #include "Luz.h"
 #include "LuzPuntual.h"
+
 using namespace std;
 
 class Mundo

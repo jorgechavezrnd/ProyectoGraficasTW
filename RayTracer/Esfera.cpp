@@ -1,11 +1,23 @@
 #include "stdafx.h"
+
 #include "Esfera.h"
 #include <math.h>
 
-Esfera::Esfera() : ObjetoGeometrico(), C(0.0), r(1.0) {}
-Esfera::Esfera(Punto3D _c, double _r) : ObjetoGeometrico(), C(_c), r(_r){}
-Esfera::Esfera(const Esfera& _e) : ObjetoGeometrico(_e), C(_e.C), r(_e.r) {}
-Esfera::~Esfera(){}
+Esfera::Esfera() : ObjetoGeometrico(), C(0.0), r(1.0) 
+{
+}
+
+Esfera::Esfera(Punto3D _c, double _r) : ObjetoGeometrico(), C(_c), r(_r)
+{
+}
+
+Esfera::Esfera(const Esfera& _e) : ObjetoGeometrico(_e), C(_e.C), r(_e.r) 
+{
+}
+
+Esfera::~Esfera()
+{
+}
 
 Esfera& Esfera::operator= (const Esfera& rhs)
 {
@@ -18,16 +30,19 @@ Esfera& Esfera::operator= (const Esfera& rhs)
 	r = rhs.r;
 	return (*this);
 }
+
 void Esfera::establecerCentro(const Punto3D& _p)
 {
 	C = _p;
 }
+
 void Esfera::establecerCentro(const double _x, const double _y, const double _z)
 {
 	C.x = _x;
 	C.y = _y;
 	C.z = _z;
 }
+
 void Esfera::establecerRadio(const double _r)
 {
 	r = _r;
@@ -69,5 +84,3 @@ bool Esfera::impacto( const Rayo& rayo, double& tmin, ShadeRec& sr) const
 	}
 	return false;
 }
-
-

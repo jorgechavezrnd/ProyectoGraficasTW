@@ -1,12 +1,14 @@
 #pragma once
+
 #include "ObjetoGeometrico.h"
-class Esfera: public ObjetoGeometrico
+
+class Esfera : public ObjetoGeometrico
 {
 public:
 	Esfera();										// Constructor por defecto
 	Esfera(Punto3D _c, double _r);					// Constructor
 	Esfera(const Esfera& _e);						// Constructor copia
-	virtual ~Esfera();										// Destructor
+	virtual ~Esfera();								// Destructor
 	
 	Esfera& operator= (const Esfera& rhs);			// Operador de asignacion
 	void establecerCentro(const Punto3D& _C);
@@ -21,5 +23,3 @@ public:
 	double r;
 	
 };
-
-	

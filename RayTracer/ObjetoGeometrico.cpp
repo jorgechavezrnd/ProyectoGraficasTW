@@ -3,9 +3,17 @@
 #include "ObjetoGeometrico.h"
 
 
-ObjetoGeometrico::ObjetoGeometrico():color(negro){}
-ObjetoGeometrico::ObjetoGeometrico(const ObjetoGeometrico& _o) : color(_o.color) {}
-ObjetoGeometrico::~ObjetoGeometrico(){}
+ObjetoGeometrico::ObjetoGeometrico():color(negro)
+{
+}
+
+ObjetoGeometrico::ObjetoGeometrico(const ObjetoGeometrico& _o) : color(_o.color)
+{
+}
+
+ObjetoGeometrico::~ObjetoGeometrico()
+{
+}
 
 ObjetoGeometrico& ObjetoGeometrico::operator=(const ObjetoGeometrico& rhs)
 {

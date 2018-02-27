@@ -1,6 +1,8 @@
 #pragma once
+
 #include "Luz.h"
-class LuzPuntual: public Luz
+
+class LuzPuntual : public Luz
 {
 public:
 	LuzPuntual();

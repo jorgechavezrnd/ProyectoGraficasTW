@@ -9,17 +9,12 @@ class Tracer {
 public:
 
 	Tracer(void);
-
 	Tracer(Mundo* _world_ptr);
-
 	virtual	~Tracer(void);
 
 	virtual ColorRGB trace_ray(const Rayo& ray) const;
-
-	virtual ColorRGB
-		trace_ray(const Rayo ray, const int depth) const;
+	virtual ColorRGB trace_ray(const Rayo ray, const int depth) const;
 
 protected:
-
-	Mundo * world_ptr;
+	Mundo* world_ptr;
 };

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Tracer.h"
 
 class EsferaSola : public Tracer {

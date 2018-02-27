@@ -1,10 +1,10 @@
 #pragma once
+
 class Mundo;
 
 #include "Punto3D.h"
 #include "Normal.h"
 #include "ColorRGB.h"
-
 
 class ShadeRec
 {
@@ -13,8 +13,6 @@ public:
 	ShadeRec(const ShadeRec& sr);	// Constructor copia
 	~ShadeRec();					// Destructor
 
-
-
 public:
 	bool impactaUnObjeto;			// El rayo impacto un objeto
 	Punto3D puntoImpactoLocal;		// Coordenadas mundo del punto de impacto
@@ -22,7 +20,3 @@ public:
 	ColorRGB color;					// Usado solo en este capitulo
 	Mundo& m;						// Referencia a mundo para shading
 };
-
-
-
-

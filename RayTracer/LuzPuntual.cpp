@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #include "LuzPuntual.h"
 
-LuzPuntual::LuzPuntual()
-	:Luz(),
-	ls(1.0),
-	color(1.0),
-	ubicacion(0,1,0)
+LuzPuntual::LuzPuntual() :Luz(), ls(1.0), color(1.0), ubicacion(0,1,0)
 {
 }
 
@@ -17,6 +13,7 @@ Vector3D LuzPuntual::obtenerDireccion(ShadeRec& sr)
 {
 	return (ubicacion - sr.puntoImpactoLocal).hat();
 }
+
 ColorRGB LuzPuntual::L(ShadeRec& sr)
 {
 	return(color*ls);
@@ -33,6 +30,7 @@ void LuzPuntual::establecerColor(float r, float g, float b)
 	color.g = g;
 	color.b = b;
 }
+
 void LuzPuntual::establecerUbicacion(Punto3D p)
 {
 	ubicacion = p;

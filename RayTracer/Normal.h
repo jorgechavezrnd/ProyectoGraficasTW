@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Punto3D.h"
+
 class Normal
 {
 public:
@@ -21,8 +23,8 @@ public:
 
 	void normalizar();							// Convertir a una normal unitaria
 
-public:
-	double x, y, z;
+	double x;
+	double y;
+	double z;
 
 };
-

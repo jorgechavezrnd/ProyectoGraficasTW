@@ -2,12 +2,29 @@
 #include "Normal.h"
 #include <math.h>
 
-Normal::Normal() : x(0.0), y(0.0), z(0.0) {}
-Normal::Normal(double _a) : x(_a), y(_a), z(_a) {}
-Normal::Normal(double _a, double _b, double _c) : x(_a), y(_b), z(_c) {}
-Normal::Normal(const Normal &n) : x(n.x), y(n.y), z(n.z) {}
-Normal::Normal(const Vector3D &v) : x(v.x), y(v.y), z(v.z) {}
-Normal::~Normal(){} 
+Normal::Normal() : x(0.0), y(0.0), z(0.0)
+{
+}
+
+Normal::Normal(double _a) : x(_a), y(_a), z(_a)
+{
+}
+
+Normal::Normal(double _a, double _b, double _c) : x(_a), y(_b), z(_c) 
+{
+}
+
+Normal::Normal(const Normal &n) : x(n.x), y(n.y), z(n.z)
+{
+}
+
+Normal::Normal(const Vector3D &v) : x(v.x), y(v.y), z(v.z)
+{
+}
+
+Normal::~Normal()
+{
+} 
 
 Normal& Normal::operator=(const Normal& rhs)
 {

@@ -3,28 +3,21 @@
 #include "Mundo.h"
 #include "ShadeRec.h"
 #include <algorithm> 
-// -------------------------------------------------------------------- default constructor
 
-EsferaSola::EsferaSola(void)
-	: Tracer()
-{}
+EsferaSola::EsferaSola(void) : Tracer()
+{
+}
 
+EsferaSola::EsferaSola(Mundo* _worldPtr) : Tracer(_worldPtr)
+{
+}
 
-// -------------------------------------------------------------------- constructor
+EsferaSola::~EsferaSola(void) 
+{
+}
 
-EsferaSola::EsferaSola(Mundo* _worldPtr)
-	: Tracer(_worldPtr)
-{}
-
-
-// -------------------------------------------------------------------- destructor
-
-EsferaSola::~EsferaSola(void) {}
-
-
-// -------------------------------------------------------------------- trace_ray
-
-ColorRGB EsferaSola::trace_ray(const Rayo& ray) const {
+ColorRGB EsferaSola::trace_ray(const Rayo& ray) const 
+{
 	ShadeRec	sr(*world_ptr); 	// not used
 	double    	t;  				// not used
 	
@@ -36,14 +29,14 @@ ColorRGB EsferaSola::trace_ray(const Rayo& ray) const {
 		Vector3D l = sr.m.luces[0]->obtenerDireccion(sr);
 		
 		ColorRGB c;
-		c.r = 0.98 * colorLuz.r * std::max(0.0, n*l);
-		c.g = 0.45* colorLuz.g * std::max(0.0, n*l);
-		c.b = 0.36* colorLuz.b * std::max(0.0, n*l);
+		//c.r = 0.98 * colorLuz.r * std::max(0.0, n*l);
+		//c.g = 0.45* colorLuz.g * std::max(0.0, n*l);
+		//c.b = 0.36* colorLuz.b * std::max(0.0, n*l);
+		c.r = 2.0 * colorLuz.r * std::max(0.0, n*l);
+		c.g = 2.0 * colorLuz.g * std::max(0.0, n*l);
+		c.b = 2.0 * colorLuz.b * std::max(0.0, n*l);
 		return (c);
 	}
 	else
 		return (blanco);
 }
-
-
-

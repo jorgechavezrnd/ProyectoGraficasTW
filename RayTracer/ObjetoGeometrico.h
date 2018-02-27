@@ -1,10 +1,12 @@
 #pragma once
+
 #include "ColorRGB.h"
 #include "Punto3D.h"
 #include "Normal.h"
 #include "Rayo.h"
 #include "ShadeRec.h"
 #include "Constantes.h"
+
 class ObjetoGeometrico
 {
 public:

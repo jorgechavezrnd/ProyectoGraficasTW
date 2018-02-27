@@ -16,11 +16,9 @@
 #include <math.h>
 #include "Salida.h"
 
-
-
-
-
-Mundo::Mundo() : colorFondo(negro), tracer_ptr(NULL) {}
+Mundo::Mundo() : colorFondo(negro), tracer_ptr(NULL) 
+{
+}
 
 Mundo::~Mundo() 
 {
@@ -32,13 +30,14 @@ Mundo::~Mundo()
 	delete_objects();
 	delete_lights();
 }
+
 void Mundo::agregarObjetoGeometrico(ObjetoGeometrico* ptr_objeto)
 {
 	objetos.push_back(ptr_objeto);
 }
 
-void Mundo::construir(void) {
-	
+void Mundo::construir(void) 
+{	
 	vp.establecerRhor(800);
 	vp.establecerRver(700);
 	vp.establecerS(0.4);
@@ -53,10 +52,10 @@ void Mundo::construir(void) {
 	agregarLuz(ptrLuzPuntual);
 
 }
+
 // Vista paralela ortografica
 void Mundo::dibujarEscena() const
 {
-	
 	Salida salida;
 	int dpi = 72;
 	int n = vp.Rhor * vp.Rver;
@@ -92,7 +91,6 @@ void Mundo::agregarLuz(Luz* ptrLuz)
 	luces.push_back(ptrLuz);
 }
 
-
 void Mundo::delete_objects(void) {
 	int num_objects = objetos.size();
 
@@ -114,6 +112,3 @@ void Mundo::delete_lights(void) {
 
 	luces.erase(luces.begin(), luces.end());
 }
-
-
-

@@ -8,14 +8,17 @@ ShadeRec::ShadeRec(Mundo& _m)
 	normal(),
 	color(negro),
 	m(_m)
-{}
+{
+}
+
 ShadeRec::ShadeRec(const ShadeRec& sr)
 	:impactaUnObjeto(sr.impactaUnObjeto),
 	puntoImpactoLocal(sr.puntoImpactoLocal),
 	color(sr.color),
 	m(sr.m)
-{}
-ShadeRec::~ShadeRec(){}
+{
+}
 
-
-
+ShadeRec::~ShadeRec()
+{
+}

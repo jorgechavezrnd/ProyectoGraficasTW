@@ -9,8 +9,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-Salida::Salida(){}
-Salida::~Salida(){}
+
+Salida::Salida()
+{
+}
+
+Salida::~Salida()
+{
+}
+
 void Salida::savebmp(const char* filename, int w, int h, int dpi, ColorRGB* data)
 {
 	FILE *f;
@@ -76,5 +83,3 @@ void Salida::savebmp(const char* filename, int w, int h, int dpi, ColorRGB* data
 	}
 	fclose(f);
 }
-
-

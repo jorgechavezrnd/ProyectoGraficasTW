@@ -1,4 +1,5 @@
 #pragma once
+
 class ColorRGB
 {
 public:
@@ -15,10 +16,7 @@ public:
 	ColorRGB operator/ (const float _a) const;		// Division por un numero por la derecha
 	ColorRGB operator* (const ColorRGB& _c)const;	// Multiplicar un color
 
-public:
-	double r, g, b;
+	double r;
+	double g;
+	double b;
 };
-
-
-
-
