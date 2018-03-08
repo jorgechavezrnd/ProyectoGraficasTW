@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Mundo.h"
 
-Mundo::Mundo() 
+Mundo::Mundo()
   : backgroundColor(blanco),
-	tracerPtr(nullptr) 
+	tracerPtr(NULL) 
 {
 }
 
@@ -24,8 +24,14 @@ void Mundo::build()
 {
 	viewPlane.setResolutions(700, 800);
 	viewPlane.setPixelSize(0.4);
-	tracerPtr = new EsferaSola(this);
+	/*tracerPtr = new EsferaSola(this);
 	buildSphere();
+	addLight(new LuzPuntual{
+		Punto3D(0.0, 160.0, 200.0),
+		blanco
+	});*/
+	buildTriangle();
+	tracerPtr = new TrianguloSola(this);
 	addLight(new LuzPuntual{
 		Punto3D(0.0, 160.0, 200.0),
 		blanco
@@ -69,6 +75,43 @@ void Mundo::drawScene() const
 	salida.savebmp("escena.bmp", Rhor, Rver, dpi, colors);
 }
 
+void Mundo::buildTriangle()
+{
+	triangle.setVertexZero(0.0, 50.0, 50.0);
+	triangle.setVertexOne(50.0, 0.0, -40.0);
+	triangle.setVertexTwo(60.0, 70.0, 0.0);
+}
+
+void Mundo::drawTriangle() const
+{
+	int n = viewPlane.horizontalResolution * viewPlane.verticalResolution;
+	ColorRGB* colors = new ColorRGB[n];
+	ColorRGB colorPixel;
+	Rayo	 rayo;
+	int Rhor = viewPlane.horizontalResolution;
+	int Rver = viewPlane.verticalResolution;
+
+	rayo.vecD = Vector3D(0.0, 0.0, -1.0);
+
+	for (int fila = 0; fila < Rver; fila++)
+	{
+		for (int col = 0; col < Rhor; col++)
+		{
+			// DISPARAMOS UN RAYO---------------------------------------------------------
+			double x_w = viewPlane.pixelSize * (col - viewPlane.horizontalResolution / 2 + 0.5);   // coordenada x
+			double y_w = viewPlane.pixelSize * (fila - viewPlane.verticalResolution / 2 + 0.5);  // coordenada y
+			double z_w = 100.0;				   		         // coordenada z	
+			Punto3D O(x_w, y_w, z_w);				         // Punto O		
+			rayo.O = O;
+			colorPixel = tracerPtr->trace_ray(rayo);
+			colors[fila * Rhor + col] = colorPixel;
+		}
+	}
+	Salida salida;
+	int dpi = 72;
+	salida.savebmp("triangulo.bmp", Rhor, Rver, dpi, colors);
+}
+		
 void Mundo::addLight(Luz* ptrLuz)
 {
 	lights.push_back(ptrLuz);

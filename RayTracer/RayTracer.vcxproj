@@ -23,7 +23,7 @@
     <ProjectGuid>{9644DB9F-1390-4127-A6CD-91EC68B1715F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>RayTracer</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -163,6 +163,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tracer.h" />
+    <ClInclude Include="Triangulo.h" />
+    <ClInclude Include="TrianguloSola.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="ViewPlane.h" />
   </ItemGroup>
@@ -187,6 +189,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Tracer.cpp" />
+    <ClCompile Include="Triangulo.cpp" />
+    <ClCompile Include="TrianguloSola.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="ViewPlane.cpp" />
   </ItemGroup>
